@@ -37,27 +37,21 @@ impl Core {
     }
 
     pub fn keypress(&mut self, args: &ButtonArgs) {
-        if args.state != input::ButtonState::Press { return () }
+        if args.state != input::ButtonState::Release { return () }
 
         match args.button {
-            Button::Keyboard(key) => {
-                match key {
-                    input::Key::R => {
-                        self.snowflakes.randomize_vectors(
-                            self.window_settings.get_size().width,
-                            self.window_settings.get_size().height
-                        );
-                    }
-
-                    _ => ()
-                }
+            Button::Keyboard(input::Key::R) => {
+                self.snowflakes.randomize_vectors(
+                    self.window_settings.get_size().width,
+                    self.window_settings.get_size().height
+                );
             }
 
             _ => ()
         }
     }
 
-    pub fn render(&self, args: &RenderArgs, c: Context, g: &mut GlGraphics) {
+    pub fn render(&self, _args: &RenderArgs, c: Context, g: &mut GlGraphics) {
         // Render the background canvas
         graphics::clear(graphics::color::hex("373472"), g);
 
@@ -73,7 +67,7 @@ impl Core {
         }
     }
 
-    pub fn update(&mut self, args: &UpdateArgs) {
+    pub fn update(&mut self, _args: &UpdateArgs) {
         for i in 0..self.snowflakes.get_capacity() {
             if let Some(s) = self.snowflakes.get_snowflake(i) {
                 if s.y > self.window_settings.get_size().height + s.radius {
