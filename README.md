@@ -4,7 +4,7 @@
 
 This project is part of my boredum in quarantine, so I have to learn something new (Rust language) and then implement it with something fun!
 
-Ikr, this is bad. My first attempt with Rust tho.
+Ikr, _nothing fancy_ here. My first attempt with Rust tho.
 
 ## How to
 **build**
